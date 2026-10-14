@@ -283,6 +283,103 @@ export default function Home() {
           </article>
         </div>
       </section>
+            <section id="contact" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="grid gap-12 md:grid-cols-2">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#a65e3b]">
+              Давайте знакомиться
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
+              Подберём кофе под ваш вкус
+            </h2>
+            <p className="mt-6 max-w-lg leading-8 text-[#6c5a4d]">
+              Расскажите, что вам интересно. Поможем выбрать зерно, ответим на
+              вопросы или расскажем, как работает подписка.
+            </p>
+            <div className="mt-8 space-y-4 text-sm text-[#6c5a4d]">
+              <p>Обжарка — каждый четверг</p>
+              <p>Доставка по Минску — по пятницам</p>
+              <p>Самовывоз: ул. Короля, 9</p>
+            </div>
+          </div>
+
+          <form className="rounded-3xl border border-[#35271f]/10 bg-[#eee5d9] p-6 sm:p-8">
+            <div className="space-y-5">
+              <div>
+                <label htmlFor="name" className="mb-2 block text-sm font-medium">
+                  Как к вам обращаться?
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  placeholder="Ваше имя"
+                  className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+                  Номер телефона
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  placeholder="+375 29 123-45-67"
+                  className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="interest" className="mb-2 block text-sm font-medium">
+                  Что вас интересует?
+                </label>
+                <select
+                  id="interest"
+                  name="interest"
+                  required
+                  defaultValue="one-off"
+                  className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition focus:border-[#a65e3b]"
+                >
+                  <option value="one-off">Кофе на один заказ</option>
+                  <option value="subscription">Подписка на кофе</option>
+                  <option value="question">Есть вопрос</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="comment" className="mb-2 block text-sm font-medium">
+                  Комментарий <span className="text-[#8b7a6d]">(необязательно)</span>
+                </label>
+                <textarea
+                  id="comment"
+                  name="comment"
+                  rows={3}
+                  placeholder="Например, люблю кофе с шоколадными нотами"
+                  className="w-full resize-y rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-full bg-[#a65e3b] px-6 py-4 font-medium text-white transition hover:bg-[#87482c]"
+              >
+                Отправить заявку
+              </button>
+
+              <p className="text-xs leading-5 text-[#8b7a6d]">
+                Нажимая кнопку, вы отправляете контактные данные мастерской
+                «Кварта» для связи по вашему обращению.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
 
       <footer id="delivery" className="bg-[#35271f] text-[#f5f0e8]">
         <div className="mx-auto max-w-6xl px-6 py-16">
