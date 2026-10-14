@@ -90,27 +90,58 @@ export default function Home() {
       </section>
 
       <section id="about" className="border-t border-[#35271f]/15 bg-[#eee5d9]">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
           <div>
-            <p className="text-3xl font-semibold">5 кг</p>
-            <p className="mt-2 text-sm text-[#6c5a4d]">
-              Обжариваем небольшими партиями
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#a65e3b]">
+              Небольшая мастерская в Минске
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+              Мы знаем, каким должен быть ваш следующий кофе.
+            </h2>
+            <p className="mt-6 leading-8 text-[#6c5a4d]">
+              «Кварта» появилась в 2019 году. Аня и Дмитрий раньше работали
+              бариста и хорошо знают, как много зависит от зерна, обжарки и
+              времени после неё.
+            </p>
+            <p className="mt-4 leading-8 text-[#6c5a4d]">
+              Поэтому мы не гонимся за объёмами: обжариваем по 5 кг за раз,
+              каждую партию — с вниманием к вкусу. Обжарка проходит по
+              четвергам, а уже в пятницу кофе отправляется к вам.
             </p>
           </div>
-          <div>
-            <p className="text-3xl font-semibold">Четверг</p>
-            <p className="mt-2 text-sm text-[#6c5a4d]">День свежей обжарки</p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold">1–3 дня</p>
-            <p className="mt-2 text-sm text-[#6c5a4d]">
-              От обжарки до вашей чашки
+
+          <div className="rounded-3xl bg-[#d9c4a8] p-8 md:p-10">
+            <p className="text-sm uppercase tracking-[0.2em] text-[#7b4b31]">
+              Наш принцип
             </p>
+            <p className="mt-5 text-3xl font-semibold leading-snug">
+              Не хранить месяцами. Обжарить, упаковать, доставить.
+            </p>
+            <div className="mt-8 space-y-5 border-t border-[#35271f]/15 pt-6">
+              <div className="flex gap-4">
+                <span className="font-semibold text-[#a65e3b]">01</span>
+                <p className="text-sm leading-6 text-[#6c5a4d]">
+                  Четверг — свежая обжарка небольшими партиями.
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <span className="font-semibold text-[#a65e3b]">02</span>
+                <p className="text-sm leading-6 text-[#6c5a4d]">
+                  Пятница — отправляем заказы по Минску.
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <span className="font-semibold text-[#a65e3b]">03</span>
+                <p className="text-sm leading-6 text-[#6c5a4d]">
+                  Через 1–3 дня после обжарки кофе уже у вас.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-            <section id="coffee" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <section id="coffee" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#a65e3b]">
@@ -121,8 +152,8 @@ export default function Home() {
             </h2>
           </div>
           <p className="max-w-md leading-7 text-[#6c5a4d]">
-            Подбираем зерно под разные способы заваривания — от лёгкого
-            фильтра до насыщенного эспрессо.
+            Подбираем зерно под разные способы заваривания — от лёгкого фильтра
+            до насыщенного эспрессо.
           </p>
         </div>
 
@@ -223,7 +254,8 @@ export default function Home() {
               </p>
               <h3 className="mt-2 text-2xl font-semibold">Дрип-пакеты</h3>
               <p className="mt-2 max-w-sm text-sm leading-6 text-[#6c5a4d]">
-                Любимый кофе в удобном формате. Залейте горячей водой — и готово.
+                Любимый кофе в удобном формате. Залейте горячей водой — и
+                готово.
               </p>
             </div>
             <div className="shrink-0">
@@ -237,7 +269,9 @@ export default function Home() {
               <p className="text-sm uppercase tracking-[0.15em] text-[#d9b99b]">
                 Кофе каждый месяц
               </p>
-              <h3 className="mt-2 text-2xl font-semibold">Подписка «Своя кварта»</h3>
+              <h3 className="mt-2 text-2xl font-semibold">
+                Подписка «Своя кварта»
+              </h3>
               <p className="mt-2 max-w-sm text-sm leading-6 text-white/70">
                 Два разных пакета по 250 г каждый месяц. Доставку оплатим мы.
               </p>
@@ -251,11 +285,48 @@ export default function Home() {
       </section>
 
       <footer id="delivery" className="bg-[#35271f] text-[#f5f0e8]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xl font-semibold">кварта.</p>
-          <p className="text-sm text-white/70">
-            Минск, ул. Короля, 9 · Самовывоз и доставка по пятницам
-          </p>
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div>
+              <p className="text-3xl font-semibold">кварта.</p>
+              <p className="mt-4 max-w-xs text-sm leading-6 text-white/65">
+                Кофе небольшой обжарки для дома, работы и неспешных утр.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-semibold">Где нас найти</h2>
+              <p className="mt-4 text-sm leading-7 text-white/70">
+                Минск, ул. Короля, 9
+                <br />
+                Самовывоз из мастерской
+              </p>
+              <p className="mt-3 text-sm leading-7 text-white/70">
+                Пн–Пт: 8:00–20:00
+                <br />
+                Сб–Вс: 10:00–18:00
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-semibold">Доставка</h2>
+              <p className="mt-4 text-sm leading-7 text-white/70">
+                По Минску — по пятницам.
+                <br />
+                Бесплатно при заказе от 50 BYN.
+              </p>
+              <a
+                href="#contact"
+                className="mt-5 inline-flex rounded-full bg-[#d9b99b] px-5 py-3 text-sm font-medium text-[#35271f] transition hover:bg-[#f5f0e8]"
+              >
+                Оставить заявку
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-12 border-t border-white/15 pt-6 text-xs text-white/50">
+            © 2026 Кварта. Кофе с вниманием к деталям.
+          </div>
         </div>
       </footer>
     </main>
