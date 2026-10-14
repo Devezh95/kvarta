@@ -1,13 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f5f0e8] text-[#35271f]">
       <header className="border-b border-[#35271f]/15">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="/" className="text-2xl font-bold tracking-tight">
+          <Link href="/" className="text-2xl font-bold tracking-tight">
             кварта<span className="text-[#a65e3b]">.</span>
-          </a>
+          </Link>
 
           <nav className="hidden gap-8 text-sm md:flex">
             <a href="#coffee" className="hover:text-[#a65e3b]">
@@ -41,8 +42,8 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-8 text-[#6c5a4d]">
-            Обжариваем небольшими партиями по 5 кг. Отправляем кофе по
-            пятницам, чтобы он попадал к вам свежим.
+            Обжариваем небольшими партиями по 5 кг. Отправляем кофе по пятницам,
+            чтобы он попадал к вам свежим.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
@@ -98,9 +99,7 @@ export default function Home() {
           </div>
           <div>
             <p className="text-3xl font-semibold">Четверг</p>
-            <p className="mt-2 text-sm text-[#6c5a4d]">
-              День свежей обжарки
-            </p>
+            <p className="mt-2 text-sm text-[#6c5a4d]">День свежей обжарки</p>
           </div>
           <div>
             <p className="text-3xl font-semibold">1–3 дня</p>
