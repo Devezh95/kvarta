@@ -2,7 +2,6 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 
-
 type Interest = "subscription" | "one-off" | "question";
 
 type Lead = {
@@ -34,21 +33,25 @@ function cleanString(value: unknown, maxLength: number): string {
 }
 
 function normalizeBelarusPhone(value: string): string | null {
-  const digits = value.replace(/\D/g, "");
+  const input = value.trim();
 
-  if (digits.length === 12 && digits.startsWith("375")) {
-    return `+${digits}`;
+  if (!input.startsWith("+375")) {
+    return null;
   }
 
-  if (digits.length === 11 && digits.startsWith("80")) {
-    return `+375${digits.slice(2)}`;
+  // Убираем пробелы, скобки и дефисы
+  const digits = input.replace(/\D/g, "");
+
+  // Ровно 12 цифр: 375 + 9 цифр
+  if (!/^375\d{9}$/.test(digits)) {
+    return null;
   }
 
-  if (digits.length === 9) {
-    return `+375${digits}`;
+  if (!/^375(25|29|33|44)\d{7}$/.test(digits)) {
+    return null;
   }
 
-  return null;
+  return `+${digits}`;
 }
 
 async function readLeads(): Promise<Lead[]> {
@@ -137,7 +140,10 @@ export async function POST(request: Request) {
 
     if (!phone) {
       return NextResponse.json(
-        { message: "Введите корректный белорусский номер, например +375 29 123-45-67." },
+        {
+          message:
+            "Введите корректный белорусский номер, например +375 29 123-45-67.",
+        },
         { status: 400 },
       );
     }
