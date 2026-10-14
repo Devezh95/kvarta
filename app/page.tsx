@@ -110,17 +110,144 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="coffee" className="mx-auto max-w-6xl px-6 py-20">
-        <p className="text-sm uppercase tracking-[0.2em] text-[#a65e3b]">
-          Скоро в этом разделе
-        </p>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
-          Найдём кофе под ваш вкус
-        </h2>
-        <p className="mt-4 max-w-xl leading-7 text-[#6c5a4d]">
-          От цветочной Эфиопии до шоколадной Бразилии. Следующим шагом добавим
-          ассортимент, цены и возможность оставить заявку.
-        </p>
+            <section id="coffee" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#a65e3b]">
+              Обжариваем сами
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+              Кофе на каждый день
+            </h2>
+          </div>
+          <p className="max-w-md leading-7 text-[#6c5a4d]">
+            Подбираем зерно под разные способы заваривания — от лёгкого
+            фильтра до насыщенного эспрессо.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article className="overflow-hidden rounded-2xl border border-[#35271f]/10 bg-[#eee5d9]">
+            <div className="flex h-52 items-center justify-center bg-[#e2d2bd]">
+              <div className="flex h-36 w-28 flex-col items-center justify-center bg-[#f5f0e8] shadow-lg">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#a65e3b]">
+                  Кварта
+                </span>
+                <span className="mt-3 text-center text-sm font-semibold">
+                  ETHIOPIA
+                </span>
+                <span className="mt-1 text-xs text-[#6c5a4d]">Yirgacheffe</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-xl font-semibold">Эфиопия Иргачефф</h3>
+                <span className="shrink-0 font-semibold">32 BYN</span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-[#6c5a4d]">
+                Цветочные ноты, бергамот и лёгкая обжарка.
+              </p>
+              <div className="mt-5 flex items-center justify-between border-t border-[#35271f]/10 pt-4 text-sm">
+                <span>Зёрна · 250 г</span>
+                <span className="rounded-full bg-[#d9c4a8] px-3 py-1">
+                  Для фильтра
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article className="overflow-hidden rounded-2xl border border-[#35271f]/10 bg-[#eee5d9]">
+            <div className="flex h-52 items-center justify-center bg-[#d6b99b]">
+              <div className="flex h-36 w-28 flex-col items-center justify-center bg-[#7b4b31] text-[#f5f0e8] shadow-lg">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#e4c8a8]">
+                  Кварта
+                </span>
+                <span className="mt-3 text-center text-sm font-semibold">
+                  COLOMBIA
+                </span>
+                <span className="mt-1 text-xs text-[#e4c8a8]">Huila</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-xl font-semibold">Колумбия Уила</h3>
+                <span className="shrink-0 font-semibold">29 BYN</span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-[#6c5a4d]">
+                Мягкая сладость карамели и сочное красное яблоко.
+              </p>
+              <div className="mt-5 flex items-center justify-between border-t border-[#35271f]/10 pt-4 text-sm">
+                <span>Зёрна · 250 г</span>
+                <span className="rounded-full bg-[#d9c4a8] px-3 py-1">
+                  На каждый день
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article className="overflow-hidden rounded-2xl border border-[#35271f]/10 bg-[#eee5d9]">
+            <div className="flex h-52 items-center justify-center bg-[#cbb49a]">
+              <div className="flex h-36 w-28 flex-col items-center justify-center bg-[#49372b] text-[#f5f0e8] shadow-lg">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d9b99b]">
+                  Кварта
+                </span>
+                <span className="mt-3 text-center text-sm font-semibold">
+                  BRAZIL
+                </span>
+                <span className="mt-1 text-xs text-[#d9b99b]">Cerrado</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-xl font-semibold">Бразилия Серрадо</h3>
+                <span className="shrink-0 font-semibold">26 BYN</span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-[#6c5a4d]">
+                Орех, шоколад и плотный вкус — отличный выбор для эспрессо.
+              </p>
+              <div className="mt-5 flex items-center justify-between border-t border-[#35271f]/10 pt-4 text-sm">
+                <span>Зёрна · 250 г</span>
+                <span className="rounded-full bg-[#d9c4a8] px-3 py-1">
+                  Для эспрессо
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-[#e2d2bd] p-7 sm:flex-row sm:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.15em] text-[#a65e3b]">
+                Без кофемашины
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold">Дрип-пакеты</h3>
+              <p className="mt-2 max-w-sm text-sm leading-6 text-[#6c5a4d]">
+                Любимый кофе в удобном формате. Залейте горячей водой — и готово.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <p className="text-2xl font-semibold">18 BYN</p>
+              <p className="mt-1 text-sm text-[#6c5a4d]">10 штук</p>
+            </div>
+          </article>
+
+          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-[#35271f] p-7 text-[#f5f0e8] sm:flex-row sm:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.15em] text-[#d9b99b]">
+                Кофе каждый месяц
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold">Подписка «Своя кварта»</h3>
+              <p className="mt-2 max-w-sm text-sm leading-6 text-white/70">
+                Два разных пакета по 250 г каждый месяц. Доставку оплатим мы.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <p className="text-2xl font-semibold">54 BYN</p>
+              <p className="mt-1 text-sm text-white/70">в месяц</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <footer id="delivery" className="bg-[#35271f] text-[#f5f0e8]">
