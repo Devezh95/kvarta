@@ -27,7 +27,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#35271f]/10 bg-[#eee5d9] p-6 sm:p-8">
+          <div className="rounded-3xl border border-coffee-border/10 bg-cream-dark p-6 sm:p-8">
             <LeadForm />
           </div>
         </div>

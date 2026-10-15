@@ -7,7 +7,7 @@ import ContactSection from "./components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f5f0e8] text-[#35271f]">
+    <main className="min-h-screen bg-cream text-[#35271f]">
       <Header />
       <HeroSection />
       <AboutSection />

@@ -73,7 +73,8 @@ export default function LeadForm() {
     } catch {
       setStatus({
         type: "error",
-        message: "Не удалось связаться с сервером. Проверьте интернет и попробуйте ещё раз.",
+        message:
+          "Не удалось связаться с сервером. Проверьте интернет и попробуйте ещё раз.",
       });
     } finally {
       setIsSubmitting(false);
@@ -83,7 +84,7 @@ export default function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-[#35271f]/10 bg-[#eee5d9] p-6 sm:p-8"
+      className="rounded-3xl border border-coffee-border/10 bg-cream-dark p-6 sm:p-8"
     >
       <div className="space-y-5">
         <div>
@@ -101,7 +102,7 @@ export default function LeadForm() {
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Ваше имя"
-            className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+            className="w-full rounded-xl border border-coffee-border/15 bg-cream px-4 py-3 outline-none transition placeholder:text-muted-light focus:border-caramel"
           />
         </div>
 
@@ -119,9 +120,9 @@ export default function LeadForm() {
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
             placeholder="+375 29 123-45-67"
-            className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+            className="w-full rounded-xl border border-coffee-border/15 bg-cream px-4 py-3 outline-none transition placeholder:text-muted-light focus:border-caramel"
           />
-          <p className="mt-2 text-xs text-[#8b7a6d]">
+          <p className="mt-2 text-xs text-muted-light">
             Используйте белорусский номер, начинающийся с +375.
           </p>
         </div>
@@ -136,7 +137,7 @@ export default function LeadForm() {
             required
             value={interest}
             onChange={(event) => setInterest(event.target.value as Interest)}
-            className="w-full rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition focus:border-[#a65e3b]"
+            className="w-full rounded-xl border border-coffee-border/15 bg-cream px-4 py-3 outline-none transition focus:border-caramel"
           >
             <option value="one-off">Кофе на один заказ</option>
             <option value="subscription">Подписка на кофе</option>
@@ -147,7 +148,7 @@ export default function LeadForm() {
         <div>
           <label htmlFor="comment" className="mb-2 block text-sm font-medium">
             Комментарий{" "}
-            <span className="text-[#8b7a6d]">(необязательно)</span>
+            <span className="text-muted-light">(необязательно)</span>
           </label>
           <textarea
             id="comment"
@@ -157,14 +158,14 @@ export default function LeadForm() {
             value={comment}
             onChange={(event) => setComment(event.target.value)}
             placeholder="Например, люблю кофе с шоколадными нотами"
-            className="w-full resize-y rounded-xl border border-[#35271f]/15 bg-[#f5f0e8] px-4 py-3 outline-none transition placeholder:text-[#8b7a6d] focus:border-[#a65e3b]"
+            className="w-full resize-y rounded-xl border border-coffee-border/15 bg-cream px-4 py-3 outline-none transition placeholder:text-muted-light focus:border-caramel"
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-full bg-[#a65e3b] px-6 py-4 font-medium text-white transition hover:bg-[#87482c] disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-full bg-caramel px-6 py-4 font-medium text-white transition hover:bg-caramel-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Отправляем..." : "Отправить заявку"}
         </button>
@@ -183,7 +184,7 @@ export default function LeadForm() {
           </p>
         )}
 
-        <p className="text-xs leading-5 text-[#8b7a6d]">
+        <p className="text-xs leading-5 text-muted-light">
           Отправляя заявку, вы соглашаетесь на использование указанных
           контактных данных для ответа на ваше обращение.
         </p>

@@ -2,10 +2,7 @@ import Container from "../ui/Container";
 
 export default function AboutSection() {
   return (
-    <section
-      id="about"
-      className="border-t border-[#35271f]/15 bg-[#eee5d9]"
-    >
+    <section id="about" className="border-t border-coffee-border/15 bg-cream-dark">
       <Container className="grid gap-12 py-20 md:grid-cols-2 md:items-center md:py-28">
         <div>
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-caramel">
@@ -23,13 +20,13 @@ export default function AboutSection() {
           </p>
 
           <p className="mt-4 leading-8 text-muted">
-            Поэтому мы не гонимся за объёмами: обжариваем по 5 кг за раз,
-            каждую партию — с вниманием к вкусу. Обжарка проходит по
-            четвергам, а уже в пятницу кофе отправляется к вам.
+            Поэтому мы не гонимся за объёмами: обжариваем по 5 кг за раз, каждую
+            партию — с вниманием к вкусу. Обжарка проходит по четвергам, а уже в
+            пятницу кофе отправляется к вам.
           </p>
         </div>
 
-        <div className="rounded-3xl bg-[#d9c4a8] p-8 md:p-10">
+        <div className="rounded-3xl bg-sand p-8 md:p-10">
           <p className="text-sm uppercase tracking-[0.2em] text-[#7b4b31]">
             Наш принцип
           </p>
@@ -38,7 +35,7 @@ export default function AboutSection() {
             Не хранить месяцами. Обжарить, упаковать, доставить.
           </p>
 
-          <div className="mt-8 space-y-5 border-t border-[#35271f]/15 pt-6">
+          <div className="mt-8 space-y-5 border-t border-coffee-border/15 pt-6">
             <div className="flex gap-4">
               <span className="font-semibold text-caramel">01</span>
               <p className="text-sm leading-6 text-muted">

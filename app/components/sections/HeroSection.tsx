@@ -21,14 +21,14 @@ export default function HeroSection() {
           <div className="mt-9 flex flex-wrap gap-4">
             <a
               href="#coffee"
-              className="rounded-full bg-[#a65e3b] px-7 py-4 font-medium text-white transition hover:bg-[#87482c]"
+              className="rounded-full bg-caramel px-7 py-4 font-medium text-white transition hover:bg-caramel-dark"
             >
               Выбрать свой кофе
             </a>
 
             <a
               href="#about"
-              className="rounded-full border border-[#35271f]/25 px-7 py-4 font-medium transition hover:bg-[#eae0d3]"
+              className="rounded-full border border-coffee-border/25 px-7 py-4 font-medium transition hover:bg-[#eae0d3]"
             >
               Наша история
             </a>
@@ -39,12 +39,12 @@ export default function HeroSection() {
           </p>
         </div>
 
-        <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[2rem] bg-[#d9c4a8] p-8 md:min-h-[500px]">
+        <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[2rem] bg-sand p-8 md:min-h-[500px]">
           <div className="absolute left-8 top-8 h-28 w-28 rounded-full bg-[#b38a66]/30 blur-2xl" />
 
           <div className="absolute bottom-10 right-8 h-40 w-40 rounded-full bg-[#8b5e3c]/20 blur-3xl" />
 
-          <div className="relative w-full max-w-sm rotate-[-3deg] rounded-sm bg-[#35271f] px-8 py-12 text-center text-cream shadow-2xl">
+          <div className="relative w-full max-w-sm rotate-[-3deg] rounded-sm bg-coffee px-8 py-12 text-center text-cream shadow-2xl">
             <p className="text-xs uppercase tracking-[0.35em] text-[#d9b99b]">
               Coffee roasters
             </p>
@@ -59,9 +59,9 @@ export default function HeroSection() {
             </p>
           </div>
 
-          <span className="absolute bottom-6 left-6 text-xs uppercase tracking-widest text-[#6c4b34]">
-            Обжариваем с вниманием
-          </span>
+         <span className="absolute bottom-1 left-4 text-[10px] uppercase tracking-widest text-[#6c4b34] md:bottom-6 md:left-6 md:text-xs">
+  Обжариваем с вниманием
+</span>
         </div>
       </Container>
     </section>

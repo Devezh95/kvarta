@@ -30,8 +30,8 @@ export default function CoffeeSection() {
             description="Цветочные ноты, бергамот и лёгкая обжарка."
             variety="Yirgacheffe"
             label="Для фильтра"
-            panelColor="bg-[#e2d2bd]"
-            packageColor="bg-[#f5f0e8]"
+            panelColor="bg-sand-light"
+            packageColor="bg-cream"
             accentColor="text-caramel"
           />
 
@@ -63,7 +63,7 @@ export default function CoffeeSection() {
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-[#e2d2bd] p-7 sm:flex-row sm:items-center">
+          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-sand-light p-7 sm:flex-row sm:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.15em] text-caramel">
                 Без кофемашины
@@ -83,7 +83,7 @@ export default function CoffeeSection() {
             </div>
           </article>
 
-          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-[#35271f] p-7 text-cream sm:flex-row sm:items-center">
+          <article className="flex flex-col justify-between gap-6 rounded-2xl bg-coffee p-7 text-cream sm:flex-row sm:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.15em] text-[#d9b99b]">
                 Кофе каждый месяц
