@@ -1,31 +1,8 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
+
+import { neon } from "@neondatabase/serverless";
 import { NextResponse } from "next/server";
 
 type Interest = "subscription" | "one-off" | "question";
-
-type Lead = {
-  id: string;
-  name: string;
-  phone: string;
-  interest: Interest;
-  comment: string;
-  createdAt: string;
-  attribution: {
-    source: string;
-    ad: string;
-    landingPage: string;
-    utmSource: string;
-    utmMedium: string;
-    utmCampaign: string;
-  };
-};
-
-const DATA_DIR = path.join(process.cwd(), "data");
-const DATA_FILE = path.join(DATA_DIR, "leads.json");
-const DUPLICATE_WINDOW_MS = 10 * 60 * 1000;
-
-let requestQueue: Promise<void> = Promise.resolve();
 
 function cleanString(value: unknown, maxLength: number): string {
   if (typeof value !== "string") return "";
@@ -39,13 +16,7 @@ function normalizeBelarusPhone(value: string): string | null {
     return null;
   }
 
-  // Убираем пробелы, скобки и дефисы
   const digits = input.replace(/\D/g, "");
-
-  // Ровно 12 цифр: 375 + 9 цифр
-  if (!/^375\d{9}$/.test(digits)) {
-    return null;
-  }
 
   if (!/^375(25|29|33|44)\d{7}$/.test(digits)) {
     return null;
@@ -54,70 +25,26 @@ function normalizeBelarusPhone(value: string): string | null {
   return `+${digits}`;
 }
 
-async function readLeads(): Promise<Lead[]> {
-  await mkdir(DATA_DIR, { recursive: true });
-
-  try {
-    const content = await readFile(DATA_FILE, "utf8");
-    const parsed: unknown = JSON.parse(content);
-    return Array.isArray(parsed) ? (parsed as Lead[]) : [];
-  } catch (error) {
-    if (
-      typeof error === "object" &&
-      error !== null &&
-      "code" in error &&
-      error.code === "ENOENT"
-    ) {
-      return [];
-    }
-
-    throw error;
-  }
-}
-
-async function saveLeadSafely(lead: Lead) {
-  let release!: () => void;
-
-  const previousRequest = requestQueue;
-  requestQueue = new Promise<void>((resolve) => {
-    release = resolve;
-  });
-
-  await previousRequest;
-
-  try {
-    const leads = await readLeads();
-    const now = Date.now();
-
-    const duplicate = leads.some(
-      (item) =>
-        item.phone === lead.phone &&
-        now - new Date(item.createdAt).getTime() < DUPLICATE_WINDOW_MS &&
-        now >= new Date(item.createdAt).getTime(),
-    );
-
-    if (duplicate) {
-      return false;
-    }
-
-    leads.push(lead);
-
-    const temporaryFile = `${DATA_FILE}.tmp`;
-    await writeFile(temporaryFile, JSON.stringify(leads, null, 2), "utf8");
-    const { rename } = await import("node:fs/promises");
-    await rename(temporaryFile, DATA_FILE);
-
-    return true;
-  } finally {
-    release();
-  }
-}
-
 export async function POST(request: Request) {
   try {
+    const databaseUrl = process.env.DATABASE_URL;
+
+    if (!databaseUrl) {
+      console.error("DATABASE_URL is not configured");
+
+      return NextResponse.json(
+        { message: "Сервис временно недоступен." },
+        { status: 500 },
+      );
+    }
+
     const body: unknown = await request.json();
 
-    if (typeof body !== "object" || body === null || Array.isArray(body)) {
+    if (
+      typeof body !== "object" ||
+      body === null ||
+      Array.isArray(body)
+    ) {
       return NextResponse.json(
         { message: "Некорректные данные формы." },
         { status: 400 },
@@ -126,8 +53,9 @@ export async function POST(request: Request) {
 
     const data = body as Record<string, unknown>;
     const name = cleanString(data.name, 100);
-    const phoneInput = cleanString(data.phone, 40);
-    const phone = normalizeBelarusPhone(phoneInput);
+    const phone = normalizeBelarusPhone(
+      cleanString(data.phone, 40),
+    );
     const comment = cleanString(data.comment, 1000);
     const interest = data.interest;
 
@@ -159,33 +87,35 @@ export async function POST(request: Request) {
       );
     }
 
+    const rawAttribution = data.attribution;
+
     const attributionData =
-      typeof data.attribution === "object" &&
-      data.attribution !== null &&
-      !Array.isArray(data.attribution)
-        ? (data.attribution as Record<string, unknown>)
+      typeof rawAttribution === "object" &&
+      rawAttribution !== null &&
+      !Array.isArray(rawAttribution)
+        ? (rawAttribution as Record<string, unknown>)
         : {};
 
-    const lead: Lead = {
-      id: crypto.randomUUID(),
-      name,
-      phone,
-      interest,
-      comment,
-      createdAt: new Date().toISOString(),
-      attribution: {
-        source: cleanString(attributionData.source, 200),
-        ad: cleanString(attributionData.ad, 200),
-        landingPage: cleanString(attributionData.landingPage, 500),
-        utmSource: cleanString(attributionData.utmSource, 200),
-        utmMedium: cleanString(attributionData.utmMedium, 200),
-        utmCampaign: cleanString(attributionData.utmCampaign, 200),
-      },
+    const attribution = {
+      source: cleanString(attributionData.source, 200),
+      ad: cleanString(attributionData.ad, 200),
+      landingPage: cleanString(attributionData.landingPage, 500),
+      utmSource: cleanString(attributionData.utmSource, 200),
+      utmMedium: cleanString(attributionData.utmMedium, 200),
+      utmCampaign: cleanString(attributionData.utmCampaign, 200),
     };
 
-    const saved = await saveLeadSafely(lead);
+    const sql = neon(databaseUrl);
 
-    if (!saved) {
+    const duplicates = await sql`
+      SELECT id
+      FROM leads
+      WHERE phone = ${phone}
+        AND created_at > NOW() - INTERVAL '10 minutes'
+      LIMIT 1
+    `;
+
+    if (duplicates.length > 0) {
       return NextResponse.json(
         {
           message:
@@ -195,6 +125,25 @@ export async function POST(request: Request) {
       );
     }
 
+    await sql`
+      INSERT INTO leads (
+        id,
+        name,
+        phone,
+        interest,
+        comment,
+        attribution
+      )
+      VALUES (
+        ${crypto.randomUUID()},
+        ${name},
+        ${phone},
+        ${interest},
+        ${comment},
+        ${JSON.stringify(attribution)}::jsonb
+      )
+    `;
+
     return NextResponse.json(
       { message: "Спасибо! Заявка отправлена. Скоро свяжемся с вами." },
       { status: 201 },
@@ -203,7 +152,10 @@ export async function POST(request: Request) {
     console.error("Failed to process lead:", error);
 
     return NextResponse.json(
-      { message: "Не удалось отправить заявку. Попробуйте ещё раз позже." },
+      {
+        message:
+          "Не удалось отправить заявку. Попробуйте ещё раз позже.",
+      },
       { status: 500 },
     );
   }

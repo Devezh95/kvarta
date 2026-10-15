@@ -3,6 +3,7 @@
 # Local customer data
 /data/leads.json
 /data/leads.json.tmp
+/.env.local
 
 # dependencies
 /node_modules
